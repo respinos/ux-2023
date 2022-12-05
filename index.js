@@ -106,6 +106,12 @@ export class HathiWebsiteHeader extends LitElement {
     // Declare reactive properties
     this.containerWidth = 0;
     this.name = 'World';
+
+    this.MEDIA_ROOT = '';
+    // this is surprisingly complicated...
+    if ( location.href != 'localhost' ) {
+      this.MEDIA_ROOT = 'https://adorable-jalebi-dd8fd7.netlify.app';
+    }
   }
 
   disconnectedCallback() {
@@ -121,7 +127,7 @@ export class HathiWebsiteHeader extends LitElement {
     return html`
       <header>
         <div class="menu">
-          <a href="https://www.hathitrust.org" aria-label="Home"><img class="logo" src="/dist/${logo}" /></a>
+          <a href="https://www.hathitrust.org" aria-label="Home"><img class="logo" src="${this.MEDIA_ROOT}/dist/${logo}" /></a>
           ${
             this.containerWidth == 0 ?
               html`<div><sl-icon name="smartwatch"></sl-icon></div>` : 
