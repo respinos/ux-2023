@@ -1,0 +1,22 @@
+{
+  "name": "ux-2023",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "lit": "^2.4.1"
+  },
+  "devDependencies": {
+    "@shoelace-style/shoelace": "^2.0.0-beta.85",
+    "esbuild": "^0.15.16",
+    "esbuild-plugin-inline-image": "^0.0.9",
+    "esbuild-plugin-lit": "^0.1.1"
+  }
+}
