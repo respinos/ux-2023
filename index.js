@@ -121,7 +121,7 @@ export class HathiWebsiteHeader extends LitElement {
     return html`
       <header>
         <div class="menu">
-          <a href="https://www.hathitrust.org" aria-label="Home"><img class="logo" src="./dist/${logo}" /></a>
+          <a href="https://www.hathitrust.org" aria-label="Home"><img class="logo" src="/dist/${logo}" /></a>
           ${
             this.containerWidth == 0 ?
               html`<div><sl-icon name="smartwatch"></sl-icon></div>` : 
