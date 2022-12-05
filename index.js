@@ -20,7 +20,8 @@ setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.85
 export class HathiWebsiteHeader extends LitElement {
   static properties = {
     name: {},
-    containerWidth: { type: Number }
+    containerWidth: { type: Number },
+    includeSearch: { attribute: 'include-search' },
   };
 
   // Define scoped styles right with your component, in plain CSS
@@ -106,6 +107,13 @@ export class HathiWebsiteHeader extends LitElement {
     // Declare reactive properties
     this.containerWidth = 0;
     this.name = 'World';
+    this.includeSearch = 'true';
+
+    // this may be shameless forest green
+    if ( location.pathname.indexOf('/Search/Advanced') > -1 || 
+         location.search.indexOf('page=advanced') > -1 ) {
+      this.includeSearch = 'false';
+    }
 
     this.MEDIA_ROOT = '';
     // this is surprisingly complicated...
@@ -196,7 +204,10 @@ export class HathiWebsiteHeader extends LitElement {
           </nav>
         </div>
       </header>
-      <hathi-search-form></hathi-search-form>
+      ${
+        this.includeSearch == 'true' ? 
+          html`<hathi-search-form></hathi-search-form>` : ''
+      }
     `;
   }
 
