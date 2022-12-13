@@ -13,7 +13,7 @@ import './lib/search-form.js';
 
 import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 
-import logo from './assets/phire-htdl.png';
+import logo from './assets/phire-htdl-v12.png';
 
 setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.85/dist');
 
@@ -37,7 +37,7 @@ export class HathiWebsiteHeader extends LitElement {
 
     header {
       max-width: 1170px;
-      margin: 0 auto;
+      margin: 1rem auto;
     }
 
     .menu {
@@ -117,8 +117,10 @@ export class HathiWebsiteHeader extends LitElement {
 
     this.MEDIA_ROOT = '';
     // this is surprisingly complicated...
-    if ( location.href != 'localhost' ) {
-      this.MEDIA_ROOT = 'https://adorable-jalebi-dd8fd7.netlify.app';
+    if ( location.hostname != 'localhost' && window.HT ) {
+      let assetUrl = new URL(document.querySelector('script[data-shoelace]').src);
+      assetUrl.pathname = '';
+      this.MEDIA_ROOT = assetUrl.toString();
     }
   }
 
